@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import cn.edu.gdmec.android.androidstudiodemo.utils.MD5Utils;
+
 public class LoginActivity extends AppCompatActivity {
     private TextView tv_main_title;//标题
     private TextView tv_back,tv_register,tv_find_psw;//返回键,显示的注册，找回密码
@@ -159,5 +160,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
     }
+
 }
 

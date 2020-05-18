@@ -13,7 +13,13 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import cn.edu.gdmec.android.androidstudiodemo.utils.MD5Utils;
+
+
 
 public class RegisterActivity extends AppCompatActivity {private TextView tv_main_title;//标题
     private TextView tv_back;//返回按钮
@@ -24,7 +30,12 @@ public class RegisterActivity extends AppCompatActivity {private TextView tv_mai
     private String userName,psw,pswAgain;
     //标题布局
     private RelativeLayout rl_title_bar;
+
+
+
+
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //设置页面布局 ,注册界面
@@ -33,7 +44,8 @@ public class RegisterActivity extends AppCompatActivity {private TextView tv_mai
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
         init();
 
-} private void init() {
+}
+private void init() {
         //从main_title_bar.xml 页面布局中获取对应的UI控件
         tv_main_title=findViewById(R.id.tv_main_title);
         tv_main_title.setText("注册");
@@ -54,19 +66,51 @@ public class RegisterActivity extends AppCompatActivity {private TextView tv_mai
             }
         });
         //注册按钮
+
+
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //获取输入在相应控件中的字符串
                 getEditString();
+
                 //判断输入框内容
-                if(TextUtils.isEmpty(userName)){
-                    Toast.makeText(RegisterActivity.this, "请输入用户名", Toast.LENGTH_SHORT).show();
+
+                if(userName.length() == 0){
+                    Toast.makeText(RegisterActivity.this,"用户名不能为空",Toast.LENGTH_SHORT).show();
                     return;
-                }else if(TextUtils.isEmpty(psw)){
-                    Toast.makeText(RegisterActivity.this, "请输入密码", Toast.LENGTH_SHORT).show();
+                }
+                else if(8 >= userName.length()){
+                    Toast.makeText(RegisterActivity.this,"用户名长度应在8-20字之间",Toast.LENGTH_SHORT).show();
                     return;
-                }else if(TextUtils.isEmpty(pswAgain)){
+                }
+                else if(userName.length() >= 20){
+                    Toast.makeText(RegisterActivity.this,"用户名长度应在8-20字之间",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                else if(userName.length() >= 20){
+                    Toast.makeText(RegisterActivity.this,"用户名长度应在8-20字之间",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+              else if(TextUtils.isEmpty(psw)){
+                    Toast.makeText(RegisterActivity.this, "密码不能为空", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                else if(8 >= psw.length()){
+                    Toast.makeText(RegisterActivity.this,"密码长度应在8-20字之间",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                else if(psw.length() >= 20){
+                    Toast.makeText(RegisterActivity.this,"密码长度应在8-20字之间",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                else if(psw.length() >= 20){
+                    Toast.makeText(RegisterActivity.this,"密码长度应在8-20字之间",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                else if(TextUtils.isEmpty(pswAgain)){
                     Toast.makeText(RegisterActivity.this, "请再次输入密码", Toast.LENGTH_SHORT).show();
                     return;
                 }else if(!psw.equals(pswAgain)){
@@ -94,9 +138,11 @@ public class RegisterActivity extends AppCompatActivity {private TextView tv_mai
                     // 表示此页面下的内容操作成功将data返回到上一页面，如果是用back返回过去的则不存在用setResult传递data值
                     RegisterActivity.this.finish();
                 }
+
             }
         });
     }
+
     /**
      * 获取控件中的字符串
      */
@@ -136,5 +182,6 @@ public class RegisterActivity extends AppCompatActivity {private TextView tv_mai
         //提交修改 editor.commit();
         editor.commit();
     }
-}
+
+    }
 
